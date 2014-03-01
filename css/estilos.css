@@ -1,0 +1,32 @@
+/* 
+    Document   : estilos
+    Created on : 17/02/2012, 15:15:36
+    Author     : Zona pc 02
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+  display: block;
+}
+
+body { font-family: monospace; } 
+
+.sala { width: 14px; height:22px; padding-left: 8px}
+
+.playfield { 
+  margin: 20px auto; 
+  /*width: 283px; */
+  height: 291px; 
+  border: 2px solid #000; 
+  overflow: hidden; 
+  background-image: url('../imgs/bg_maze.jpg'); 
+  /*background-position: 0px 0px; */
+  background-repeat: repeat-x; 
+  position: relative
+}
