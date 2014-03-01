@@ -15,9 +15,14 @@ root {
   display: block;
 }
 
+.float-left { float: left}
+.clear { clear: both}
+
 body { font-family: monospace; } 
 
-.sala { width: 14px; height:22px; padding-left: 8px}
+/*.sala { width: 14px; height:22px; padding-left: 8px}*/
+
+.sala {width: 14px; height: 14px; float: left; border: 1px solid #000; }
 
 .playfield { 
   margin: 20px auto; 
@@ -30,3 +35,9 @@ body { font-family: monospace; }
   background-repeat: repeat-x; 
   position: relative
 }
+
+
+.bt { border-top: 1px solid #fff}
+.br { border-right: 1px solid #fff}
+.bb { border-bottom: 1px solid #fff}
+.bl { border-left: 1px solid #fff}
