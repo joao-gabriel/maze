@@ -18,22 +18,25 @@ root {
 .float-left { float: left}
 .clear { clear: both}
 
-body { font-family: monospace; } 
+body { font-family: monospace; background: #666} 
 
 /*.sala { width: 14px; height:22px; padding-left: 8px}*/
 
+.screen { width: 640px; height: 480px; margin: auto; background: #fff; position: relative;}
+#view { border: 1px double #999; width: 320px; margin: auto}
+
 .sala {width: 14px; height: 14px; float: left; border: 1px solid #000; }
 
-.playfield { 
-  margin: 20px auto; 
-  /*width: 283px; */
-  height: 291px; 
-  border: 2px solid #000; 
-  overflow: hidden; 
-  background-image: url('../imgs/bg_maze.jpg'); 
-  /*background-position: 0px 0px; */
-  background-repeat: repeat-x; 
-  position: relative
+#prev {
+  position: absolute;
+  left: 0px;
+  top: 120px;
+}
+
+#next {
+  position: absolute;
+  right: 0px;
+  top: 120px;
 }
 
 

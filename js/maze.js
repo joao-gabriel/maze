@@ -160,7 +160,7 @@ function Maze(_W, _H) {
   }
 
   this.show = show;
-  function show() {
+  function show(where) {
 
     this.output = '';
 
@@ -188,7 +188,7 @@ function Maze(_W, _H) {
 
     console.log(this.output);
 
-    $('body').html(this.output);
+    $(where).html(this.output);
 
   }
 
