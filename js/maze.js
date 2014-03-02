@@ -11,6 +11,7 @@ function Maze(_W, _H) {
   this.south = 4;
   this.west = 8;
 
+  this.direction = 0;
 
 
   this.oppositeDirection = oppositeDirection;
@@ -128,7 +129,7 @@ function Maze(_W, _H) {
       if (salasAdjacentesIntactas.length > 0) {
 
         // Escolhe uma das salas adjacentes aleatóriamente
-        var indice = parseInt(random(seed) * salasAdjacentesIntactas.length);
+        var indice = parseInt(random(seed+salasVisitadas) * salasAdjacentesIntactas.length);
         var salaEscolhida = salasAdjacentesIntactas[indice];
 
         // Coloca a sala atual na pilha de salas
@@ -160,7 +161,7 @@ function Maze(_W, _H) {
   }
 
   this.show = show;
-  function show(where) {
+  function show(where, roomNow) {
 
     this.output = '';
 
@@ -169,16 +170,37 @@ function Maze(_W, _H) {
       for (i = 0; i < this.width; i++) {
 
         var salaAtual = this.salasArray[j][i];
-        console.log(this.salasArray[j][i]);
+        var marker = '';
+        if ((roomNow.hPos === i) && (roomNow.vPos === j)) {
+          switch (this.direction) {
+
+            case this.north:
+              marker = 'A';
+              break;
+
+            case this.east:
+              marker = '>';
+              break;
+
+            case this.south:
+              marker = 'V';
+              break;
+
+            case this.west:
+              marker = '<';
+              break;
+          }
+
+        }
 
         var northWall = salaAtual.walls & this.north ? ' bt' : '';
         var eastWall = salaAtual.walls & this.east ? ' br' : '';
         var southWall = salaAtual.walls & this.south ? ' bb' : '';
         var westWall = salaAtual.walls & this.west ? ' bl' : '';
 
-        var quebraLinha = i===this.width-1?'<div class="clear"></div>':'';
+        var quebraLinha = i === this.width - 1 ? '<div class="clear"></div>' : '';
 
-        this.output += '<div class="sala ' + northWall + eastWall + southWall + westWall + ' " ></div>'+quebraLinha;
+        this.output += '<div class="sala ' + northWall + eastWall + southWall + westWall + ' " >' + marker + '</div>' + quebraLinha;
 
 
       }
@@ -186,11 +208,67 @@ function Maze(_W, _H) {
 
     this.output += '';
 
-    console.log(this.output);
-
     $(where).html(this.output);
 
   }
+
+  this.enterRoom = enterRoom;
+  function enterRoom(fromRoom) {
+    var mazeInstance = this;
+
+    switch (mazeInstance.direction) {
+
+      case this.north:
+        novoV = fromRoom.vPos - 1;
+        novoH = fromRoom.hPos;
+        break;
+
+      case this.east:
+        novoV = fromRoom.vPos;
+        novoH = fromRoom.hPos + 1;
+        break;
+
+      case this.south:
+        novoV = fromRoom.vPos + 1;
+        novoH = fromRoom.hPos;
+        break;
+
+      case this.west:
+        novoV = fromRoom.vPos;
+        novoH = fromRoom.hPos - 1;
+        break;
+
+    }
+
+    toRoom = this.salasArray[novoV][novoH];
+    toRoom.show('#view');
+
+    // Pula direto para o slide da direção correta
+    var slideNum = [];
+    slideNum[1] = 0;
+    slideNum[2] = 1;
+    slideNum[4] = 2;
+    slideNum[8] = 3;
+
+    $('#view').cycle({
+      fx: 'scrollHorz',
+      speed: 'slow',
+      timeout: 0,
+      next: '#next',
+      prev: '#prev',
+      startingSlide: slideNum[mazeInstance.direction]
+    });
+
+    mazeInstance.show('#mapa', toRoom);
+
+    $('.porta').click(function() {
+      mazeInstance.enterRoom(toRoom);
+    });
+
+    return toRoom;
+
+  }
+
 
 
 }

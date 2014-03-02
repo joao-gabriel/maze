@@ -17,9 +17,10 @@
       <div id="view">
         
       </div>
-      <div id="prev"><a href="#"><</a></div>
-      <div id="next"><a href="#">></a></div>
+      <input type="button" id="prev" class="turnBtn" value="<" />
+      <input type="button" id="next" class="turnBtn" value=">" />
       
+      <h2>Map</h2>
       <div id="mapa"></div>
       
     </div>

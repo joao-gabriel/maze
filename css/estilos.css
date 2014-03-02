@@ -11,6 +11,10 @@
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 
+*::selection { color: transparent; background: transparent}
+
+* { outline: none}
+
 root { 
   display: block;
 }
@@ -23,20 +27,33 @@ body { font-family: monospace; background: #666}
 /*.sala { width: 14px; height:22px; padding-left: 8px}*/
 
 .screen { width: 640px; height: 480px; margin: auto; background: #fff; position: relative;}
-#view { border: 1px double #999; width: 320px; margin: auto}
+#view { border: 1px double #999; width: 320px; height: 240px; margin: auto}
+#view .porta { width: 85px; height: 160px; position: absolute; top: 65px; left: 116px; cursor: pointer }
+
 
 .sala {width: 14px; height: 14px; float: left; border: 1px solid #000; }
 
 #prev {
-  position: absolute;
   left: 0px;
-  top: 120px;
 }
 
 #next {
-  position: absolute;
   right: 0px;
-  top: 120px;
+}
+
+.turnBtn{
+  position: absolute;
+  display: block;
+  top: 0px;
+  cursor: pointer;
+  background: #ccc;
+  border: 1px solid #000;
+  font-size: 60px;
+  padding: 84px 20px;
+}
+
+.turnBtn:active {
+  background: #bbb;
 }
 
 
