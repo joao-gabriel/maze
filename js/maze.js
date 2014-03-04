@@ -61,7 +61,7 @@ function Maze(_W, _H) {
     }
 
     // Escolhe uma sala aleatóriamente para ser a primeira
-    var seed = 13;
+    
     var hPos = parseInt(random(seed) * this.width - 1);
     var vPos = parseInt(random(seed) * this.height - 1);
     var salaAtual = this.salasArray[vPos][hPos];

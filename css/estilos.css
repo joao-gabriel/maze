@@ -61,3 +61,29 @@ body { font-family: monospace; background: #666}
 .br { border-right: 1px solid #fff}
 .bb { border-bottom: 1px solid #fff}
 .bl { border-left: 1px solid #fff}
+
+
+#end {
+  position: absolute;
+  width: 105px;
+  height: 170px;
+  background: #d00;
+  top: 54px;
+  left: 106px;
+  border: 1px solid;
+  border-bottom: 0px;
+  text-align: center;
+}
+#end:before{
+  content: 'EXIT'
+}
+
+#key {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 10px;
+  height: 20px;
+  background: #0d0;
+  cursor: pointer;
+}
