@@ -31,6 +31,7 @@ $(document).ready(function() {
   chave.direction = labirinto.west;
   chave.type = 'item';
   chave.what = 'key';
+  chave.cover = 'locker';
   salaChave.roomStuff.push(chave);
 
   $('#prev').click(function() {

@@ -1,13 +1,16 @@
 
-function roomStuff(_direction, _type, _what) {
+function roomStuff(_direction, _type, _what, _cover) {
+
+  _cover = typeof _cover !== "undefined" ? _cover : '';
 
   this.direction = _direction;
   this.type = _type;
   this.what = _what;
-
+  this.cover = _cover;
+  
   this.getStuff = getStuff;
   function getStuff() {
-    return '<div class="' + this.type + '" id="' + this.what + '"></div>';
+    return '<div class="' + this.type + ' '+this.cover+'" id="' + this.what + '"></div>';
   }
   this.appendStuffEvent = appendStuffEvent;
   
