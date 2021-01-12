@@ -11,7 +11,7 @@ function createArray(length) {
   return arr;
 }
 
-var seed = 13;
+var seed = Date.now();
 
 function random(seed) {
   var x = Math.sin(seed++) * 10000;

@@ -20,14 +20,18 @@ function roomStuff(_direction, _type, _what, _cover) {
     var what = this.what;
 
     $("body").on("click", "#end", function(e) {
+      e.stopImmediatePropagation();
       // Verifica se o jogador tem a chave
       console.log(items);
       if (items.indexOf('key') !== -1) {
         alert('Saiu');
+        salasV++;
+        salasH++;
+        initGame();
       }else{
         alert('Porta trancada');
       }
-
+      return false;
     });
 
     $("body").on("click", ".item", function(e) {

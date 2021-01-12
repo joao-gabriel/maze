@@ -1,12 +1,13 @@
 
 var items = new Array();
+var salasH = 2, salasV = 2;
 
-$(document).ready(function() {
+function initGame(){
 
-  // Define o número de salas do labirinto
+ // Define o número de salas do labirinto
   var labirinto = new Maze();
-  labirinto.width = 3;
-  labirinto.height = 3;
+  labirinto.width = salasH;
+  labirinto.height = salasV;
 
   // Cria o labirinto e coloca num array bidimensional de salas
   var salasArray = labirinto.create();
@@ -26,7 +27,7 @@ $(document).ready(function() {
   saida.what = 'end';
   salaFinal.roomStuff.push(saida);
 
-  var salaChave = salasArray[parseInt(random(seed)*labirinto.height)-1][parseInt(random(seed)*labirinto.width)-1];
+  var salaChave = salasArray[parseInt(random(seed)*labirinto.height)][parseInt(random(seed)*labirinto.width)];
   var chave = new roomStuff();
   chave.direction = labirinto.west;
   chave.type = 'item';
@@ -45,6 +46,10 @@ $(document).ready(function() {
 
 
 
+}
+
+$(document).ready(function() {
+  initGame();
 });
 
 
